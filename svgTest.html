@@ -1,0 +1,55 @@
+<html>
+<head>
+
+</head>
+
+<body style="margin:0">
+
+</body >
+<div id="stats"> </div>
+
+
+<script>
+
+    svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    document.body.appendChild(svg)
+
+    svg.setAttribute("viewBox", "-1 -1 2 2");
+    svg.setAttribute("version", "1.1");
+    // svg.setAttribute("width", screen.height);
+    // svg.setAttribute("height", screen.height);
+    svg.setAttribute("aria-hidden", "true");
+
+    let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+ 
+    nodes = [
+        {x:-1, y:0},
+        {x:1, y:1},
+        {x:1, y:-0.5},
+        {x:-5, y:5}
+    ]
+
+    var pathString = ""
+    var pos = [0,0]
+    pointString = "m " + pos[0] + " " + pos[1]
+    pathString += pointString
+
+    nodes.forEach(n => {
+        var pos = n
+        pointString = " l " + pos.x + " " + pos.y
+        pathString += pointString
+        console.log(pointString)
+
+    });
+    path.setAttribute("d", pathString);
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", "black");
+    path.setAttribute("stroke-width", "0.01");
+
+    svg.appendChild(path)
+
+
+
+</script>
+
+</html>

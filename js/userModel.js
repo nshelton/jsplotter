@@ -86,7 +86,16 @@ var loadFile = function (file) {
             });
                 
             model.position.set(0, 0, 0);
-            scene.add(model);             
+            scene.add(model);      
+            model.children[0].geometry.computeBoundingBox()
+            var minPos = model.children[0].geometry.boundingBox.min
+            var maxPos = model.children[0].geometry.boundingBox.max
+
+            var scale = Math.max(Math.max(maxPos.x - minPos.x,maxPos.y - minPos.y), maxPos.z - minPos.z)
+
+            model.children[0].scale.set(1/scale, 1/scale, 1/scale)
+
+
 
         }, false );
         
